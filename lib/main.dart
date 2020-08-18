@@ -234,127 +234,198 @@ class _MyHomePageState extends State<MyHomePage> {
                                             ),
                                           ],
                                         ),
-
                                         SizedBox( height: 20 ),
                                         Text('Date of your entrance', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
                                         Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            DropdownButton(
-                                              value: _selectedYearVal_entrance,
-                                              items: _yearValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedYearVal_entrance = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('년'), SizedBox(width: 10 ),
-                                            DropdownButton(
-                                              value: _selectedMonthVal_entrance,
-                                              items: _monthValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedMonthVal_entrance = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('월'), SizedBox(width: 10 ),
-                                            DropdownButton(
-                                              value: _selectedDayVal_entrance,
-                                              items: _dayValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedDayVal_entrance = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('일'),
-                                          ],
-                                        ),
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              DropdownButton(
+                                                value: _selectedYearVal_entrance,
+                                                items: _yearValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedYearVal_entrance = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('년'), SizedBox(width: 10 ),
+                                              DropdownButton(
+                                                value: _selectedMonthVal_entrance,
+                                                items: _monthValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedMonthVal_entrance = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('월'), SizedBox(width: 10 ),
+                                              DropdownButton(
+                                                value: _selectedDayVal_entrance,
+                                                items: _dayValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedDayVal_entrance = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('일'), SizedBox(width: 15 ),
+                                              FlatButton(
+                                                child: Text('Calendar', style: TextStyle(fontSize: 15),),
+                                                onPressed: () {
+                                                  Future<
+                                                      DateTime> selectedDate = showDatePicker(
+                                                    context: context,
+                                                    initialDate:
+                                                    DateTime(
+                                                        _selectedYearVal_entrance,
+                                                        _selectedMonthVal_entrance,
+                                                        _selectedDayVal_entrance),
+                                                    firstDate: DateTime(
+                                                        startOfRangeOfYear),
+                                                    lastDate: DateTime(
+                                                        endOfRangeOfYear),
+                                                    builder: (
+                                                        BuildContext context,
+                                                        Widget child) {
+                                                      return Theme(
+                                                        data: ThemeData.dark(),
+                                                        child: child,
+                                                      );
+                                                    },
+                                                  );
+                                                  selectedDate.then((dateTime) {
+                                                    setState(() {
+                                                      _selectedYearVal_entrance =
+                                                          dateTime.year;
+                                                      _selectedMonthVal_entrance =
+                                                          dateTime.month;
+                                                      _selectedDayVal_entrance =
+                                                          dateTime.day;
+                                                    });
+                                                  });
+                                                }, // onPressed
+                                              ),
+                                            ],
+                                          ),
                                         SizedBox( height: 15 ),
                                         Text('Date of your graduate', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
                                         Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            DropdownButton(
-                                              value: _selectedYearVal_graduate,
-                                              items: _yearValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedYearVal_graduate = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('년'), SizedBox(width: 10 ),
-                                            DropdownButton(
-                                              value: _selectedMonthVal_graduate,
-                                              items: _monthValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedMonthVal_graduate = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('월'), SizedBox(width: 10 ),
-                                            DropdownButton(
-                                              value: _selectedDayVal_graduate,
-                                              items: _dayValueList.map(
-                                                      (value){
-                                                    return DropdownMenuItem(
-                                                      value: value,
-                                                      child: Text(value.toString()),
-                                                    );
-                                                  }
-                                              ).toList(),
-                                              onChanged: (value){
-                                                setState(() {
-                                                  _selectedDayVal_graduate = value;
-                                                });
-                                              },
-                                            ),
-                                            Text('일'),
-                                          ],
-                                        ),
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              DropdownButton(
+                                                value: _selectedYearVal_graduate,
+                                                items: _yearValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedYearVal_graduate = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('년'), SizedBox(width: 10 ),
+                                              DropdownButton(
+                                                value: _selectedMonthVal_graduate,
+                                                items: _monthValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedMonthVal_graduate = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('월'), SizedBox(width: 10 ),
+                                              DropdownButton(
+                                                value: _selectedDayVal_graduate,
+                                                items: _dayValueList.map(
+                                                        (value){
+                                                      return DropdownMenuItem(
+                                                        value: value,
+                                                        child: Text(value.toString()),
+                                                      );
+                                                    }
+                                                ).toList(),
+                                                onChanged: (value){
+                                                  setState(() {
+                                                    _selectedDayVal_graduate = value;
+                                                  });
+                                                },
+                                              ),
+                                              Text('일'), SizedBox(width: 15 ),
+                                              FlatButton(
+                                                child: Text('Calendar', style: TextStyle(fontSize: 15),),
+                                                onPressed: () {
+                                                  Future<
+                                                      DateTime> selectedDate = showDatePicker(
+                                                    context: context,
+                                                    initialDate:
+                                                    DateTime(
+                                                        _selectedYearVal_graduate,
+                                                        _selectedMonthVal_graduate,
+                                                        _selectedDayVal_graduate),
+                                                    firstDate: DateTime(
+                                                        startOfRangeOfYear),
+                                                    lastDate: DateTime(
+                                                        endOfRangeOfYear),
+                                                    builder: (
+                                                        BuildContext context,
+                                                        Widget child) {
+                                                      return Theme(
+                                                        data: ThemeData.dark(),
+                                                        child: child,
+                                                      );
+                                                    },
+                                                  );
+                                                  selectedDate.then((dateTime) {
+                                                    setState(() {
+                                                      _selectedYearVal_graduate =
+                                                          dateTime.year;
+                                                      _selectedMonthVal_graduate =
+                                                          dateTime.month;
+                                                      _selectedDayVal_graduate =
+                                                          dateTime.day;
+                                                    });
+                                                  });
+                                                }, // onPressed
+                                              ),
+                                            ],
+                                          ),
                                         SizedBox( height: 15 ),
                                         Container(
                                           width: 200, height: 200,
