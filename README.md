@@ -1,6 +1,6 @@
-# flutter_widget_practice
+# Flutter_practice
 
-Chap 4
+Use material design, Default widgets.
 
 ## Getting Started
 
