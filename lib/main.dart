@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
@@ -165,16 +166,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                             Expanded(child: TextField(
                                               decoration: InputDecoration(
                                                 border:OutlineInputBorder(),
-                                                labelText: 'Input your name',
-                                              ),),
-                                            ),
+                                                labelText: 'Name',
+                                                hintText: 'Input your name',
+                                              ),
+                                              onChanged: (value){},
+                                            ),),
                                             SizedBox( width: 10 ),
                                             Expanded(child: TextField(
+                                              inputFormatters: [WhitelistingTextInputFormatter(RegExp('[0-9]')),],
                                               decoration: InputDecoration(
                                                 border:OutlineInputBorder(),
-                                                labelText: 'Input your student number',
-                                              ),),
-                                            ),
+                                                labelText: 'Student number',
+                                                hintText: 'Input your number',
+                                              ),
+                                              onChanged: (value){},
+                                            ),),
                                           ],
                                         ),
                                         SizedBox( height: 15 ),
@@ -238,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Text('Date of your entrance', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
                                         Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: <Widget>[
                                               DropdownButton(
@@ -334,7 +340,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                         Text('Date of your graduate', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),),
                                         Row(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: <Widget>[
                                               DropdownButton(
@@ -429,7 +435,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                         SizedBox( height: 15 ),
                                         Container(
                                           width: 200, height: 200,
-
 
                                         )
                                       ],
