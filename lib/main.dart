@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget { //정적 섹션
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget { //동적 섹션
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
