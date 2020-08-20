@@ -27,12 +27,15 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+
 enum Major {SOFTWARE, WEBSOLUTION, DESIGN}
 DateTime now = DateTime.now();
 final startOfRangeOfYear = 2000;
 final endOfRangeOfYear = 2040;
 
 class _MyHomePageState extends State<MyHomePage> {
+  var _size = 300.0;
+
   Major _major = Major.WEBSOLUTION;
   final _valueList = ['Freshman', 'Senior', 'Junior'];
   var _selectedValue = 'Freshman';
@@ -49,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -65,15 +69,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Center(
-                child:Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+            Stack(
+                children: <Widget>[
+                  Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:[
                             Container(
@@ -92,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:[
                             Container(
@@ -112,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children:[
                             Container(
@@ -131,7 +136,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ]
                 ),
-              ),
+                GestureDetector(
+                      onTap:(){
+                        setState(() {
+                          if (_size== screenSize.height) _size = 220.0;
+                          else _size = screenSize.height;
+                        });
+                      },
+                      child: AnimatedContainer(
+                        child:Image.asset('media/cyber.jpg', fit: BoxFit.cover,alignment: Alignment.center,),
+                        duration: Duration(seconds:1),
+                        height: _size,
+                        curve: Curves.fastLinearToSlowEaseIn,
+                      ),
+                    ),
+              ],
+            ),
             //Widget page
             SingleChildScrollView(
               child: ListBody(
