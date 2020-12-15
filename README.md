@@ -1,6 +1,5 @@
 # Flutter practice
 ### Use material design, Default widgets.
-<img src=https://user-images.githubusercontent.com/53461080/90719343-15431380-e2ef-11ea-9b2f-6c47a0b232b3.png height=200>
 I'm in the process of learning.
 
 ## Concept
